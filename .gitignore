@@ -1,5 +1,7 @@
 # Idea directory
 .idea
+# pgdata directory
+pgdata
 # Logs
 logs
 *.log
