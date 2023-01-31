@@ -16,10 +16,7 @@ export const validateEnv = () => {
       DB_PASSWORD: joi.string().required().min(3),
       DB_PORT: joi.number().port(),
       DB_IS_SYNCHRONIZED: joi.boolean().required(),
-      DB_MIGRATIONS: joi.required(),
-      DB_MIGRATIONS_DIR: joi.required(),
       DB_MIGRATIONS_RUN: joi.boolean().required(),
-      DB_MIGRATIONS_TABLE_NAME: joi.string().required(),
     })
     .unknown();
 
