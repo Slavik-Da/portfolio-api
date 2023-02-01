@@ -1,5 +1,6 @@
 import { type Request } from 'express';
 
-export const getBearerTokenFromHeaders = (req: Request) => {
-  req.get('authorization')?.replace('Bearer', '').trim();
+export const getBearerTokenFromHeaders = (req: Request): string => {
+  const token = req.get('authorization')?.replace('Bearer', '').trim();
+  return token ?? '';
 };
