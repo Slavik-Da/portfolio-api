@@ -1,5 +1,6 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../common/entity/baseEntity';
+import { HashedRefreshToken } from '../../auth/entities/refreshTokens.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -8,4 +9,11 @@ export class User extends BaseEntity {
 
   @Column({ nullable: true })
   hashedPassword: string;
+
+  @OneToMany(
+    () => HashedRefreshToken,
+    (hashedRefreshToken) => hashedRefreshToken.user,
+    { eager: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' }
+  )
+  hashedRefreshToken: HashedRefreshToken[];
 }
