@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from './database/data-source';
+import { UsersModule } from './user/users.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { dataSourceOptions } from './database/data-source';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
+    UsersModule,
   ],
 })
 export class AppModule {
