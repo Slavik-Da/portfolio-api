@@ -6,7 +6,7 @@ config();
 
 const configService = new ConfigService();
 
-export const databaseOptions: DataSourceOptions = {
+export const dataSourceOptions: DataSourceOptions = {
   type: configService.get<'postgres'>('DB_TYPE') ?? 'postgres',
   host: configService.get<string>('DB_HOST'),
   port: configService.get<number>('DB_PORT'),
@@ -19,5 +19,5 @@ export const databaseOptions: DataSourceOptions = {
   migrations: ['dist/database/migrations/*.js'],
 };
 
-const database = new DataSource(databaseOptions);
-export default database;
+const dataSource = new DataSource(dataSourceOptions);
+export default dataSource;
