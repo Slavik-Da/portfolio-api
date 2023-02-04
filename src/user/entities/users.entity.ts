@@ -1,6 +1,7 @@
 import { Entity, Column, OneToMany } from 'typeorm';
 import { BaseEntity } from '../../common/entity/baseEntity';
 import { HashedRefreshToken } from '../../auth/entities/refreshTokens.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User extends BaseEntity {
@@ -8,6 +9,7 @@ export class User extends BaseEntity {
   email: string;
 
   @Column({ nullable: true })
+  @Exclude()
   hashedPassword: string;
 
   @OneToMany(
@@ -15,5 +17,6 @@ export class User extends BaseEntity {
     (hashedRefreshToken) => hashedRefreshToken.user,
     { eager: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' }
   )
+  @Exclude()
   hashedRefreshToken: HashedRefreshToken[];
 }
